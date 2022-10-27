@@ -1,6 +1,11 @@
 import { FC } from "react";
 import { useTime } from "./hooks/time";
-import { formatShit, getTimeSinceVorlesungsBeginn } from "./utils/time";
+import {
+  formatShit,
+  getNextVorlesungsBeginn,
+  getTimeSinceLastLectureBegin,
+  lectureDuration,
+} from "./utils/time";
 import "./index.css";
 
 const App: FC = () => {
@@ -8,7 +13,24 @@ const App: FC = () => {
 
   return (
     <div className="center">
-      <h1>{formatShit(90 * 60 * 1000 - getTimeSinceVorlesungsBeginn(time))}</h1>
+      <div>
+        {getTimeSinceLastLectureBegin(time) > lectureDuration ? (
+          <>
+            <p>Nächste Vorlesung in</p>
+
+            <h1>
+              {formatShit(Math.abs(getNextVorlesungsBeginn(time) - time))}
+            </h1>
+          </>
+        ) : (
+          <>
+            <p>Vorlesung endet in</p>
+            <h1>
+              {formatShit(lectureDuration - getTimeSinceLastLectureBegin(time))}
+            </h1>
+          </>
+        )}
+      </div>
     </div>
   );
 };

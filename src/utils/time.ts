@@ -1,11 +1,14 @@
 import moment from "moment";
 
 const startOffset = 15 * 60 * 1000; // 15 minutes (first Vorlesung would be at 00:15, not 00:00)
-const lectureDuration = 90 * 60 * 1000; // 90 minutes
+export const lectureDuration = 90 * 60 * 1000; // 90 minutes
 const timeBetweenLectures = 2 * 60 * 60 * 1000; // 2 hours (firs Vorlesung 00:15, next 02:15)
 
 export const getTagesbeginn = (time: number) =>
   moment(time).startOf("day").valueOf();
+
+export const getNextVorlesungsBeginn = (time: number) =>
+  time - getTimeSinceLastLectureBegin(time) + timeBetweenLectures;
 
 export const getTimeSinceLastLectureBegin = (time: number) => {
   const timeOfDay = time - getTagesbeginn(time);
