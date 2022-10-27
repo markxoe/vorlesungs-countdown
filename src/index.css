@@ -1,0 +1,25 @@
+@import "../node_modules/inter-ui/inter.css";
+
+:root {
+  --background: rgb(53, 53, 53);
+  --text: rgb(225, 225, 225);
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text);
+  height: 100%;
+  font-family: "Inter", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
