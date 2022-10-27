@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTime } from "./hooks/time";
 import {
   formatShit,
-  getNextVorlesungsBeginn,
+  getNextLectureBegin,
   getTimeSinceLastLectureBegin,
   lectureDuration,
 } from "./utils/time";
@@ -18,9 +18,7 @@ const App: FC = () => {
           <>
             <p>Nächste Vorlesung in</p>
 
-            <h1>
-              {formatShit(Math.abs(getNextVorlesungsBeginn(time) - time))}
-            </h1>
+            <h1>{formatShit(getNextLectureBegin(time) - time)}</h1>
           </>
         ) : (
           <>

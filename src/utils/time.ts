@@ -7,7 +7,7 @@ const timeBetweenLectures = 2 * 60 * 60 * 1000; // 2 hours (firs Vorlesung 00:15
 export const getTagesbeginn = (time: number) =>
   moment(time).startOf("day").valueOf();
 
-export const getNextVorlesungsBeginn = (time: number) =>
+export const getNextLectureBegin = (time: number) =>
   time - getTimeSinceLastLectureBegin(time) + timeBetweenLectures;
 
 export const getTimeSinceLastLectureBegin = (time: number) => {
