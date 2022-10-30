@@ -9,7 +9,7 @@ import {
 import "./index.css";
 
 const App: FC = () => {
-  const time = useTime(100);
+  const time = useTime(500);
 
   return (
     <div className="center">
