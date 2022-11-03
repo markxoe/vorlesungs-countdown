@@ -26,6 +26,14 @@ const App: FC = () => {
             <h1>
               {formatShit(lectureDuration - getTimeSinceLastLectureBegin(time))}
             </h1>
+            <progress
+              value={
+                1 -
+                (lectureDuration - getTimeSinceLastLectureBegin(time)) /
+                  lectureDuration
+              }
+              max={1}
+            />
           </>
         )}
       </div>
