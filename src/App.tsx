@@ -7,14 +7,29 @@ import {
   lectureDuration,
 } from "./utils/time";
 import "./index.css";
+import Confetti from "react-confetti";
+
+const confettiRunFor = 3 * 1000; // 5 seconds
 
 const App: FC = () => {
   const time = useTime(500);
 
+  const timeSinceLastLectureBegin = getTimeSinceLastLectureBegin(time);
+
   return (
     <div className="center">
+      <Confetti
+        numberOfPieces={
+          (timeSinceLastLectureBegin > lectureDuration / 2 &&
+            timeSinceLastLectureBegin < lectureDuration / 2 + confettiRunFor) ||
+          (timeSinceLastLectureBegin > lectureDuration &&
+            timeSinceLastLectureBegin < lectureDuration + confettiRunFor)
+            ? 200
+            : 0
+        }
+      />
       <div>
-        {getTimeSinceLastLectureBegin(time) > lectureDuration ? (
+        {timeSinceLastLectureBegin > lectureDuration ? (
           <>
             <p>Nächste Vorlesung in</p>
 
@@ -23,14 +38,11 @@ const App: FC = () => {
         ) : (
           <>
             <p>Vorlesung endet in</p>
-            <h1>
-              {formatShit(lectureDuration - getTimeSinceLastLectureBegin(time))}
-            </h1>
+            <h1>{formatShit(lectureDuration - timeSinceLastLectureBegin)}</h1>
             <progress
               value={
                 1 -
-                (lectureDuration - getTimeSinceLastLectureBegin(time)) /
-                  lectureDuration
+                (lectureDuration - timeSinceLastLectureBegin) / lectureDuration
               }
               max={1}
             />
