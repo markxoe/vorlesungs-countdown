@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      workbox: { skipWaiting: true },
+      workbox: { skipWaiting: true, globPatterns: ["assets/Inter-*"] },
       manifest: {
         id: "/",
         short_name: "VRLSNGCNTDN",
