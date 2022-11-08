@@ -44,6 +44,7 @@ export default defineConfig({
         ],
         orientation: "any",
         background_color: "#353535",
+        theme_color: "#353535",
       },
     }),
   ],
