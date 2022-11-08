@@ -32,9 +32,11 @@ progress {
   border-radius: 50px;
   border: none;
 }
+
 progress::-webkit-progress-bar {
   background: transparent;
 }
+
 progress::-webkit-progress-value {
   background: var(--text);
   float: left;
