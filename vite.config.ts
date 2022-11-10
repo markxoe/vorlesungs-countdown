@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         id: "/",
         short_name: "VRLSNGCNTDN",
-        name: "Vorlesungs Countdown",
+        name: "Vorlesungscountdown",
         lang: "de",
         display: "standalone",
         start_url: "/",
